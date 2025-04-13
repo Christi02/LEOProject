@@ -27,51 +27,54 @@ public class RunSimulation {
         userMenu();
     }
     /**
-     * Main menu of the system where the current user is selected. If there is no
-     * user selected then the system will exit. 
+     * Main menu of the system where the current user is selected. 
+     * If there is no user selected then the system will exit. 
+     * 
      */
     public static void userMenu(){
-        int choice;
-        do { 
+        String choice;
+        do{ 
             System.out.println("-------- Welcome -------");
-            System.out.println("1. Scientist");
-            System.out.println("2. Space Agency Representative");
-            System.out.println("3. Policymaker");
-            System.out.println("4. Administrator");
-            System.out.println("5. Exit\n");
-            System.out.println("Please pick a user.");
-            choice = scanner.nextInt();
-            
+            System.out.println("Scientist");
+            System.out.println("Space Agency Representative");
+            System.out.println("Policymaker");
+            System.out.println("Administrator");
+            System.out.println("EXIT \n");
+            System.out.println("Please pick a user or type EXIT.");
+            choice = scanner.nextLine();
+
             switch(choice){
-                case 1:
+                case "Scientist":
                     scientistMenu();
                     break;
-                case 2:
+                case "Space Agency Representative":
                     spaceAgencyRepMenu();
                     break;
-                case 3:
+                case "Policymaker":
                     policyMakerMenu();
                     break;
-                case 4:
+                case "Administrator":
                     administratorMenu();
                     break;
-                case 5:
-                    System.out.println("Exiting the system. Thank you!\n");
+                case "EXIT":
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid choice. Please try again.\n");
+                    System.out.println("Invalid choice. Please try again. \n");
             }
-        } while (choice != 5);
+        } while(!choice.equals("EXIT"));
     }
+    /**
+     * Menu for Scientists. 
+     */
     public static void scientistMenu(){
         int choice;
         do {
-            System.out.println("-------- Scientist Menu -------");
+            System.out.println("-------- Scientist's Menu -------");
             System.out.println("1. Track Object in Space");
             System.out.println("2. Assess Orbit Status");
             System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick an option.");
+            System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
             switch(choice){
@@ -89,14 +92,17 @@ public class RunSimulation {
 
         } while(choice != 3);
     }
+    /**
+     * Menu for Representatives.
+     */
     public static void spaceAgencyRepMenu(){
         int choice;
         do {
-            System.out.println("-------- Space Agency Representative Menu -------");
+            System.out.println("-------- Space Agency Representative's Menu -------");
             System.out.println("1. Analyze Long-term Immpact");
             System.out.println("2. Generate Density Reports");
             System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick an option.");
+            System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
             switch(choice){
@@ -114,14 +120,17 @@ public class RunSimulation {
 
         } while(choice != 3);
     }
+    /**
+     * Menu for Policymakers.
+     */
     public static void policyMakerMenu(){
         int choice;
         do {
-            System.out.println("-------- Policymaker Menu -------");
+            System.out.println("-------- Policymaker's Menu -------");
             System.out.println("1. Review Reports on Debris Impact");
             System.out.println("2. Assess Risk Levels for Future Space Missions");
             System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick an option.");
+            System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
             switch(choice){
@@ -139,15 +148,18 @@ public class RunSimulation {
 
         } while(choice != 3);
     }
+    /**
+     * Menu for Administrators.
+     */
     public static void administratorMenu(){
         int choice;
         do {
-            System.out.println("-------- Administrator Menu -------");
+            System.out.println("-------- Administrator's Menu -------");
             System.out.println("1. Create User");
             System.out.println("2. Manage User");
             System.out.println("3. Delete User");
             System.out.println("4. Back to main menu \n");
-            System.out.println("Please pick an option.");
+            System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
             switch(choice){
