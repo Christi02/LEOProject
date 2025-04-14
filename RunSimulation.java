@@ -34,6 +34,7 @@ public class RunSimulation {
     public static void mainMenu(){
         String choice;
         Scientist scientist = new Scientist("Scientist");
+        SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
         Policymaker policymaker = new Policymaker("Policymaker");
 
         do{ 
@@ -45,6 +46,7 @@ public class RunSimulation {
             System.out.println("EXIT \n");
             System.out.println("Please pick a user or type EXIT.");
             choice = scanner.nextLine();
+            System.out.println();
 
             switch(choice){
                 case "Scientist":
@@ -53,6 +55,7 @@ public class RunSimulation {
                     break;
                 case "Space Agency Representative":
                     //spaceAgencyRepMenu();
+                    sap.userMenu();
                     break;
                 case "Policymaker":
                     //policyMakerMenu();
