@@ -34,6 +34,7 @@ public class RunSimulation {
     public static void mainMenu(){
         String choice;
         Scientist scientist = new Scientist("Scientist");
+        Policymaker policymaker = new Policymaker("Policymaker");
 
         do{ 
             System.out.println("-------- Welcome -------");
@@ -55,6 +56,7 @@ public class RunSimulation {
                     break;
                 case "Policymaker":
                     //policyMakerMenu();
+                    policymaker.userMenu();
                     break;
                 case "Administrator":
                     //administratorMenu();

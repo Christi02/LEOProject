@@ -1,16 +1,11 @@
-/**
- * Curated menu for only Scientists. 
- */
-public class Scientist extends User{
+public class Policymaker extends User{
 
-    // public void Scientist(){
-    // }
-    public Scientist(String position){
+    public Policymaker(String position){
         super(position);
     }
     public void subMenuChoice(){
-        System.out.println("1. Track Objects in Space");
-        System.out.println("2. Assess Orbit System");
+        System.out.println("1. Review reports on debris impact");
+        System.out.println("2. Assess risk levels for future space missions");
     }
     public void subSwitchCases(int choice){
         switch(choice){

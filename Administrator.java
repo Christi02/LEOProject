@@ -1,11 +1,9 @@
-/**
- * Curated menu for only Scientists. 
- */
-public class Scientist extends User{
+public class Administrator extends User{
 
-    // public void Scientist(){
-    // }
-    public Scientist(String position){
+    public void Administrator(){
+
+    }
+    public Administrator(String position){
         super(position);
     }
     public void subMenuChoice(){
