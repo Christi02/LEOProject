@@ -24,15 +24,17 @@ public class RunSimulation {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
-        userMenu();
+        mainMenu();
     }
     /**
      * Main menu of the system where the current user is selected. 
      * If there is no user selected then the system will exit. 
      * 
      */
-    public static void userMenu(){
+    public static void mainMenu(){
         String choice;
+        Scientist scientist = new Scientist("Scientist");
+
         do{ 
             System.out.println("-------- Welcome -------");
             System.out.println("Scientist");
@@ -45,19 +47,20 @@ public class RunSimulation {
 
             switch(choice){
                 case "Scientist":
-                    scientistMenu();
+                    //scientistMenu();
+                    scientist.userMenu();
                     break;
                 case "Space Agency Representative":
-                    spaceAgencyRepMenu();
+                    //spaceAgencyRepMenu();
                     break;
                 case "Policymaker":
-                    policyMakerMenu();
+                    //policyMakerMenu();
                     break;
                 case "Administrator":
-                    administratorMenu();
+                    //administratorMenu();
                     break;
                 case "EXIT":
-                    System.exit(0);
+                    System.exit(0); //no errors, program ends
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again. \n");
@@ -67,116 +70,116 @@ public class RunSimulation {
     /**
      * Menu for Scientists. 
      */
-    public static void scientistMenu(){
-        int choice;
-        do {
-            System.out.println("-------- Scientist's Menu -------");
-            System.out.println("1. Track Object in Space");
-            System.out.println("2. Assess Orbit Status");
-            System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick a number option.");
-            choice = scanner.nextInt();
+    // public static void scientistMenu(){
+    //     int choice;
+    //     do {
+    //         System.out.println("-------- Scientist's Menu -------");
+    //         System.out.println("1. Track Object in Space");
+    //         System.out.println("2. Assess Orbit Status");
+    //         System.out.println("3. Back to main menu \n");
+    //         System.out.println("Please pick a number option.");
+    //         choice = scanner.nextInt();
 
-            switch(choice){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    System.out.println("Going back to the main menu. \n");
-                    userMenu();
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again. \n");
-            }
+    //         switch(choice){
+    //             case 1:
+    //                 break;
+    //             case 2:
+    //                 break;
+    //             case 3:
+    //                 System.out.println("Going back to the main menu. \n");
+    //                 userMenu(); //sends back to main menu
+    //                 break;
+    //             default:
+    //                 System.out.println("Invalid choice. Please try again. \n");
+    //         }
 
-        } while(choice != 3);
-    }
-    /**
-     * Menu for Representatives.
-     */
-    public static void spaceAgencyRepMenu(){
-        int choice;
-        do {
-            System.out.println("-------- Space Agency Representative's Menu -------");
-            System.out.println("1. Analyze Long-term Immpact");
-            System.out.println("2. Generate Density Reports");
-            System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick a number option.");
-            choice = scanner.nextInt();
+    //     } while(choice != 3);
+    // }
+    // /**
+    //  * Menu for Representatives.
+    //  */
+    // public static void spaceAgencyRepMenu(){
+    //     int choice;
+    //     do {
+    //         System.out.println("-------- Space Agency Representative's Menu -------");
+    //         System.out.println("1. Analyze Long-term Immpact");
+    //         System.out.println("2. Generate Density Reports");
+    //         System.out.println("3. Back to main menu \n");
+    //         System.out.println("Please pick a number option.");
+    //         choice = scanner.nextInt();
 
-            switch(choice){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    System.out.println("Going back to the main menu. \n");
-                    userMenu();
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again. \n");
-            }
+    //         switch(choice){
+    //             case 1:
+    //                 break;
+    //             case 2:
+    //                 break;
+    //             case 3:
+    //                 System.out.println("Going back to the main menu. \n");
+    //                 userMenu(); //sends back to main menu
+    //                 break;
+    //             default:
+    //                 System.out.println("Invalid choice. Please try again. \n");
+    //         }
 
-        } while(choice != 3);
-    }
-    /**
-     * Menu for Policymakers.
-     */
-    public static void policyMakerMenu(){
-        int choice;
-        do {
-            System.out.println("-------- Policymaker's Menu -------");
-            System.out.println("1. Review Reports on Debris Impact");
-            System.out.println("2. Assess Risk Levels for Future Space Missions");
-            System.out.println("3. Back to main menu \n");
-            System.out.println("Please pick a number option.");
-            choice = scanner.nextInt();
+    //     } while(choice != 3);
+    // }
+    // /**
+    //  * Menu for Policymakers.
+    //  */
+    // public static void policyMakerMenu(){
+    //     int choice;
+    //     do {
+    //         System.out.println("-------- Policymaker's Menu -------");
+    //         System.out.println("1. Review Reports on Debris Impact");
+    //         System.out.println("2. Assess Risk Levels for Future Space Missions");
+    //         System.out.println("3. Back to main menu \n");
+    //         System.out.println("Please pick a number option.");
+    //         choice = scanner.nextInt();
 
-            switch(choice){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    System.out.println("Going back to the main menu. \n");
-                    userMenu();
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again. \n");
-            }
+    //         switch(choice){
+    //             case 1:
+    //                 break;
+    //             case 2:
+    //                 break;
+    //             case 3:
+    //                 System.out.println("Going back to the main menu. \n");
+    //                 userMenu(); //sends back to main menu
+    //                 break;
+    //             default:
+    //                 System.out.println("Invalid choice. Please try again. \n");
+    //         }
 
-        } while(choice != 3);
-    }
-    /**
-     * Menu for Administrators.
-     */
-    public static void administratorMenu(){
-        int choice;
-        do {
-            System.out.println("-------- Administrator's Menu -------");
-            System.out.println("1. Create User");
-            System.out.println("2. Manage User");
-            System.out.println("3. Delete User");
-            System.out.println("4. Back to main menu \n");
-            System.out.println("Please pick a number option.");
-            choice = scanner.nextInt();
+    //     } while(choice != 3);
+    // }
+    // /**
+    //  * Menu for Administrators.
+    //  */
+    // public static void administratorMenu(){
+    //     int choice;
+    //     do {
+    //         System.out.println("-------- Administrator's Menu -------");
+    //         System.out.println("1. Create User");
+    //         System.out.println("2. Manage User");
+    //         System.out.println("3. Delete User");
+    //         System.out.println("4. Back to main menu \n");
+    //         System.out.println("Please pick a number option.");
+    //         choice = scanner.nextInt();
 
-            switch(choice){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    System.out.println("Going back to the main menu. \n");
-                    userMenu();
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again. \n");
-            }
+    //         switch(choice){
+    //             case 1:
+    //                 break;
+    //             case 2:
+    //                 break;
+    //             case 3:
+    //                 break;
+    //             case 4:
+    //                 System.out.println("Going back to the main menu. \n");
+    //                 userMenu(); //sends back to main menu 
+    //                 break;
+    //             default:
+    //                 System.out.println("Invalid choice. Please try again. \n");
+    //         }
 
-        } while(choice != 4);
-    }
+    //     } while(choice != 4);
+    // }
 }
