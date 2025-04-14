@@ -3,7 +3,7 @@
  *
  *
  * @author Joseth Sanjay Valdez
- * @author Cristin Moreno
+ * @author Christin Moreno
  * @version 1.0
  */
 
