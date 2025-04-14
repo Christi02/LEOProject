@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-public class SpaceObject {
+public abstract class SpaceObject {
 
     /** ID used to keep track of this record. */
     private int recordId;
