@@ -15,7 +15,7 @@ public abstract class SpaceObject {
     /** Catalog number from norad. */
     private int noradCatId;
 
-    /** Name of the object (satellite, rocket part, etc.). */
+    /** Name of the object. */
     private String satelliteName;
 
     /** Country that launched or owns it. */
@@ -37,7 +37,7 @@ public abstract class SpaceObject {
     private double avgLongitude;
 
     /** A geohash value to roughly locate the object’s position. */
-    private double geohash;
+    private double[] geohash = new double[2];
 
     /** True if the object is nominated for a specific project or tracking. */
     private boolean isNominated;
@@ -55,7 +55,7 @@ public abstract class SpaceObject {
     private boolean isUnkObject;
 
 
-    // ---------- Setters ----------
+    // Setters
 
     /**
      * Sets the unique record ID for this object.
@@ -141,10 +141,12 @@ public abstract class SpaceObject {
     /**
      * Sets the geohash value to estimate the object’s location.
      *
-     * @param geohash a geohash representation of location
+     * @param latitude a geohash representation of the latitude
+     * @param longitude a geohash representation of the longitude
      */
-    public void setGeohash(double geohash) {
-        this.geohash = geohash;
+    public void setGeohash(double latitude, double longitude) {
+        geohash[0] = latitude;
+        geohash[1] = longitude;
     }
 
     /**
@@ -193,7 +195,7 @@ public abstract class SpaceObject {
     }
 
 
-// ---------- Getters ----------
+// Getters
 
     /**
      * Gets the unique record ID.
@@ -281,8 +283,9 @@ public abstract class SpaceObject {
      *
      * @return a geohash location value
      */
-    public double getGeohash() {
-        return geohash;
+    public double[] getGeohash() {
+        // return a copy if you want to guard against external modification:
+        return new double[]{ geohash[0], geohash[1] };
     }
 
     /**
