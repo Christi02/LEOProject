@@ -1,3 +1,4 @@
+
 /**
  * This class is designed to model an object in space, whether it be debris or a satellite.
  *

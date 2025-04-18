@@ -1,3 +1,5 @@
+
+
 import java.util.Scanner;
 /**
  * Abstract User class that holds the User Menu. 

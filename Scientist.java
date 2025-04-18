@@ -1,3 +1,5 @@
+
+
 /**
  * Curated menu for only Scientists. 
  * @author Christin Moreno
@@ -28,8 +30,10 @@ public class Scientist extends User{
     public void subSwitchCases(int choice){
         switch(choice){
             case 1:
+                TrackObjectInSpace.toisMenu();
                 break;
             case 2:
+                AssessOrbitSystem.aosMenu();
                 break;
             case 3:
                 System.out.println("Going back to the main menu. \n");
