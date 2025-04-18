@@ -220,7 +220,7 @@ public abstract class SpaceObject {
      *
      * @return the object’s name
      */
-    public String satelliteName() {
+    public String getSatelliteName() {
         return satelliteName;
     }
 
