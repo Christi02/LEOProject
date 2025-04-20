@@ -1,13 +1,11 @@
-
-
 import java.util.Scanner;
 /**
- * Abstract User class that holds the User Menu. 
+ * Abstract User class that holds the User Menu.
  * @author Christin Moreno
  * @author Joseth Sanjay Valdez
  * @version 1.0
  */
-abstract class User {
+abstract class User extends SpaceObject{
     public String position;
 
     Scanner scanner = new Scanner(System.in);
@@ -22,7 +20,7 @@ abstract class User {
         int choice;
         do {
             System.out.println("-------- "+ position+"'s " +  "Menu -------");
-            subMenuChoice(); 
+            subMenuChoice();
             System.out.println("3. Back to main menu \n");
             System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
