@@ -36,7 +36,7 @@ public class Scientist extends User{
                 //TrackObjectInSpace.toisMenu();
                 break;
             case 2:
-                assessOrbitSystem();
+                Debris.assessOrbitSystem(debrisArray);
                 break;
             case 3:
                 System.out.println("Going back to the main menu. \n");
@@ -47,26 +47,4 @@ public class Scientist extends User{
         }
     }
 
-    /**
-     * Method to print the list of all debris objects.
-     */
-    private void assessOrbitSystem() {
-        for (int i = 0; i < debrisArray.length; i++) {
-            if (debrisArray[i] != null) {
-                Debris debris = debrisArray[i];
-
-                System.out.println("Record ID: " + debris.recordId);
-                System.out.println("Satellite Name: " + debris.satelliteName);
-                System.out.println("Country: " + debris.country);
-                System.out.println("Orbit Type: " + debris.orbitType);
-                System.out.println("Launch Year: " + debris.launchYear);
-                System.out.println("Launch Site: " + debris.launchSite);
-                System.out.println("Longitude: " + debris.longitude);
-                System.out.println("Avg. Longitude: " + debris.avgLongitude);
-                System.out.println("Geohash: [" + debris.geohash[0] + ", " + debris.geohash[1] + "]");
-                System.out.println("Days Old: " + debris.daysOld);
-                System.out.println("----------------------------------------------------");
-            }
-        }
-    }
 }
