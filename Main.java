@@ -135,28 +135,48 @@ public class Main {
     }
 
     /**
-     * Converts a string to a double safely.
-     * If conversion fails, returns 0.0.
+     * Tries to convert a string to a double.
+     * If the string is invalid or null, returns 0.0.
      *
      * @param value the string to convert
-     * @return the double value or 0.0 if invalid
+     * @return the parsed double value, or 0.0 if invalid
      */
     private static double parseDouble(String value) {
+        if (value == null) {
+            return 0.0;
+        }
+
         try {
-            return Double.parseDouble(value.trim());
-        } catch (Exception e) {
+            String trimmedValue = value.trim(); // Remove spaces before/after
+            return Double.parseDouble(trimmedValue); // Try converting to double
+        } catch (NumberFormatException e) {
+            // If it fails to convert (like "abc"), return 0.0
             return 0.0;
         }
     }
 
     /**
      * Converts a string to a boolean.
-     * Accepts "true" or "1" (case insensitive) as true.
+     * Returns true only if the string is "true" (any case) or "1".
      *
      * @param value the string to check
-     * @return true if value is "true" or "1", otherwise false
+     * @return true if the string is "true" or "1", otherwise false
      */
     private static boolean parseBoolean(String value) {
-        return value != null && (value.trim().equalsIgnoreCase("true") || value.trim().equals("1"));
+        if (value == null) {
+            return false;
+        }
+
+        String trimmedValue = value.trim(); // Remove spaces
+
+        if (trimmedValue.equalsIgnoreCase("true")) {
+            return true;
+        }
+
+        if (trimmedValue.equals("1")) {
+            return true;
+        }
+
+        return false;
     }
 }
