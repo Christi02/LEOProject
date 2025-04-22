@@ -11,9 +11,6 @@ import java.util.Date;
 
 public class Satellite extends SpaceObject{
 
-    /** The High-Resolution Radar category. */
-    private String HRRCategory;
-
     /** Indicates if the satellite is nominated for special tracking. */
     private boolean isNominated;
 
@@ -39,15 +36,31 @@ public class Satellite extends SpaceObject{
     private double deltaV90day;
 
 
-    // Setters
+    // Constructor
 
-    /**
-     * Sets the HRR category for the satellite.
-     * @param category the HRR category as a string
-     */
-    public void setHRRCategory(String category) {
-        this.HRRCategory = category;
+    public Satellite(int recordId, int noradCatId, String satelliteName, String country,
+                     String orbitType, int launchYear, String launchSite,
+                     double longitude, double avgLongitude, double[] geohash,
+                     boolean isNominated, boolean hasDossier, int daysOld,
+                     int conjunctionCount, boolean isUnkObject) {
+        this.recordId = recordId;
+        this.noradCatId = noradCatId;
+        this.satelliteName = satelliteName;
+        this.country = country;
+        this.orbitType = orbitType;
+        this.launchYear = launchYear;
+        this.launchSite = launchSite;
+        this.longitude = longitude;
+        this.avgLongitude = avgLongitude;
+        this.geohash = geohash;
+        this.isNominated = isNominated;
+        this.hasDossier = hasDossier;
+        this.daysOld = daysOld;
+        this.conjunctionCount = conjunctionCount;
+        this.isUnkObject = isUnkObject;
     }
+
+    // Setters
 
     /**
      * Sets whether the satellite is nominated.
@@ -117,14 +130,6 @@ public class Satellite extends SpaceObject{
     // Getters
 
     /**
-     * Returns the HRR category of the satellite.
-     * @return the HRR category as a string
-     */
-    public String getHRRCategory() {
-        return HRRCategory;
-    }
-
-    /**
      * Returns whether the satellite is nominated.
      * @return true if nominated, false otherwise
      */
@@ -187,4 +192,3 @@ public class Satellite extends SpaceObject{
     public double getDeltaV90Day() {
         return deltaV90day;
     }
-}
