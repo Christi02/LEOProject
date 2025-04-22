@@ -1,4 +1,3 @@
-
 /**
  * This class is designed to model an object in space, whether it be debris or a satellite.
  *
@@ -11,49 +10,51 @@
 public abstract class SpaceObject {
 
     /** ID used to keep track of this record. */
-    private int recordId;
+    protected  int recordId;
 
     /** Catalog number from norad. */
-    private int noradCatId;
+    protected  int noradCatId;
 
-    /** Name of the object. */
-    private String satelliteName;
+    /** Name of the object (satellite, rocket part, etc.). */
+    protected  String satelliteName;
 
     /** Country that launched or owns it. */
-    private String country;
+    protected  String country;
+
+    protected String orbitType;
 
     /** What kind of object it is. Like satellite or debris. */
-    private String objectType;
+    protected  String objectType;
 
     /** The year when it was launched. */
-    private int launchYear;
+    protected  int launchYear;
 
     /** Where it was launched from. */
-    private String launchSite;
+    protected  String launchSite;
 
     /** Current longitude position. */
-    private double longitude;
+    protected  double longitude;
 
     /** The average longitude of the object’s orbit. */
-    private double avgLongitude;
+    protected  double avgLongitude;
 
     /** A geohash value to roughly locate the object’s position. */
-    private double[] geohash = new double[2];
+    protected  double[] geohash = new double[2];
 
     /** True if the object is nominated for a specific project or tracking. */
-    private boolean isNominated;
+    protected  boolean isNominated;
 
     /** True if the object has a full dossier with details on its status. */
-    private boolean hasDossier;
+    protected  boolean hasDossier;
 
     /** The number of days since the object was launched or tracked. */
-    private int daysOld;
+    protected  int daysOld;
 
     /** The number of times the object has been involved in a conjunction event. */
-    private int conjunctionCount;
+    protected  int conjunctionCount;
 
     /** True if the object is classified as an unknown object in the system. */
-    private boolean isUnkObject;
+    protected boolean isUnkObject;
 
 
     // Setters
@@ -92,6 +93,10 @@ public abstract class SpaceObject {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void setOrbitType(String orbitType) {
+        this.orbitType = orbitType;
     }
 
     /**
@@ -228,10 +233,19 @@ public abstract class SpaceObject {
     /**
      * Gets the country that owns or launched the object.
      *
-     * @return the name or code of the country
+     * @return the name of the country
      */
     public String getCountry() {
         return country;
+    }
+
+    /**
+     * Gets the approximate orbit type of the object.
+     *
+     * @return the approximate orbit type
+     */
+    public String getOrbitType() {
+        return orbitType;
     }
 
     /**
