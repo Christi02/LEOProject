@@ -1,27 +1,24 @@
-/**
- * Curated menu for only Scientists.
- * @author Christin Moreno
- * @author Joseth Sanjay Valdez
- * @version 1.0
- */
-public class Scientist extends User{
+public class Scientist extends User {
 
-    private Debris[] debrisArray;  // Array to hold debris objects
+    private Debris[] debrisArray = new Debris[1000];
+    private UnknownTypeObject[] unknownObjArray = new UnknownTypeObject[1000];
 
-    /** explicitly invokes from User class */
-    public Scientist(String position, Debris[] debrisArray){
+    /** Constructor explicitly invokes from User class */
+    public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray) {
         super(position);
-        this.debrisArray = debrisArray;  // Pass the list of debris objects
+        this.debrisArray = debrisArray;
+        this.unknownObjArray = unknownObjArray;
     }
 
     /**
      * Overrides subMenuChoice method from User class
-     *  Specified menu options for the user.
+     * Specifies menu options for the user.
      */
     @Override
-    public void subMenuChoice(){
+    public void subMenuChoice() {
         System.out.println("1. Track Objects in Space");
         System.out.println("2. Assess Orbit System");
+        System.out.println("3. Return to Main Menu");
     }
 
     /**
@@ -30,22 +27,19 @@ public class Scientist extends User{
      * @param choice user input for menu option
      */
     @Override
-    public void subSwitchCases(int choice){
-        switch(choice){
+    public void subSwitchCases(int choice) {
+        switch (choice) {
             case 1:
-                TrackObjectInSpace.toisMenu();
+                TrackObjectInSpace.toisMenu(debrisArray, unknownObjArray);
                 break;
             case 2:
-                //Debris.printDebrisData(debrisArray);
-                AssessOrbitSystem.aosMenu();                
+                System.out.println("Assessing Orbit System...");
                 break;
             case 3:
                 System.out.println("Going back to the main menu. \n");
-                //RunSimulation.mainMenu(); //sends back to main menu
                 break;
             default:
                 System.out.println("Invalid choice. Please try again. \n");
         }
     }
-
 }

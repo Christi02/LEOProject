@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -37,11 +36,12 @@ public class RunSimulation {
     public static void mainMenu(){
         String choice;
         Debris[] debrisArray = loadDebrisFromCSV("rso_metrics.csv");
+        UnknownTypeObject[] unknownObjArray = loadUnknownTypeObjectsFromCSV("rso_metrics.csv");
 
-        Scientist scientist = new Scientist("Scientist", debrisArray);
-        SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
-        Policymaker policymaker = new Policymaker("Policymaker");
-        Administrator administrator = new Administrator("Administrator");
+        Scientist scientist = new Scientist("Scientist", debrisArray, unknownObjArray);
+        //SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
+        //Policymaker policymaker = new Policymaker("Policymaker");
+        //Administrator administrator = new Administrator("Administrator");
 
         do{
             System.out.println("-------- Welcome -------");
@@ -59,13 +59,13 @@ public class RunSimulation {
                     scientist.userMenu();
                     break;
                 case "Space Agency Representative":
-                    sap.userMenu();
+                    //sap.userMenu();
                     break;
                 case "Policymaker":
-                    policymaker.userMenu();
+                    //policymaker.userMenu();
                     break;
                 case "Administrator":
-                    administrator.userMenu();
+                    //administrator.userMenu();
                     break;
                 case "EXIT":
                     System.exit(0); //no errors, program ends
@@ -167,6 +167,101 @@ public class RunSimulation {
         return trimmedArray;
     }
 
+
+
+    public static UnknownTypeObject[] loadUnknownTypeObjectsFromCSV(String filePath) {
+        UnknownTypeObject[] unknownTypeObjectArray = new UnknownTypeObject[1000]; // Create a fixed-size array to store unknown type objects
+        int unknownCount = 0;
+
+        try {
+            File file = new File(filePath);
+            Scanner scanner = new Scanner(file, "UTF-8");
+
+            // Skip the header row
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
+
+            // Read each line and parse its values
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                // Split the line into fields, considering quoted commas
+                String[] allFields = new String[30];
+                int fieldIndex = 0;
+                boolean insideQuotes = false;
+                StringBuilder field = new StringBuilder();
+
+                for (int i = 0; i < line.length(); i++) {
+                    char c = line.charAt(i);
+                    if (c == '"') {
+                        insideQuotes = !insideQuotes;
+                    } else if (c == ',' && !insideQuotes) {
+                        allFields[fieldIndex++] = field.toString();
+                        field.setLength(0);
+                    } else {
+                        field.append(c);
+                    }
+                }
+                allFields[fieldIndex++] = field.toString(); // add the last field
+
+                // Parse and extract each required value from the fields
+                int i = 0;
+                int recordId = parseInt(allFields[i++]);
+                int noradCatId = parseInt(allFields[i++]);
+                String satelliteName = allFields[i++];
+                String country = allFields[i++];
+                String approximateOrbitType = allFields[i++];
+                String objectType = allFields[i++];
+                int launchYear = parseInt(allFields[i++]);
+                String launchSite = allFields[i++];
+                double longitude = parseDouble(allFields[i++]);
+                double avgLongitude = parseDouble(allFields[i++]);
+
+                // Geohash is split into two numbers
+                String[] geoParts = allFields[i++].split("[ ,]");
+                double[] geoHash = new double[2];
+                geoHash[0] = geoParts.length > 0 ? parseDouble(geoParts[0]) : 0.0;
+                geoHash[1] = geoParts.length > 1 ? parseDouble(geoParts[1]) : 0.0;
+
+                i++; // skip unused field
+                boolean isNominated = parseBoolean(allFields[i++]);
+                i++; // skip unused field
+                boolean hasDossier = parseBoolean(allFields[i++]);
+                i += 3; // skip 3 unused fields
+                int daysOld = parseInt(allFields[i++]);
+                int conjunctionCount = parseInt(allFields[i++]);
+                boolean isUnkObject = parseBoolean(allFields[i++]);
+
+                // Create UnknownTypeObject if objectType is "UNKNOWN"
+                if ("UNKNOWN".equalsIgnoreCase(objectType)) {
+                    UnknownTypeObject unkObject = new UnknownTypeObject(
+                            recordId, noradCatId, satelliteName, country, approximateOrbitType,
+                            objectType, launchYear, launchSite, longitude, avgLongitude, geoHash,
+                            isNominated, hasDossier, daysOld, conjunctionCount, isUnkObject
+                    );
+
+                    // Add to the array if there's space
+                    if (unknownCount < unknownTypeObjectArray.length) {
+                        unknownTypeObjectArray[unknownCount++] = unkObject;
+                    }
+                }
+            }
+
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("CSV file not found.");
+        }
+
+        // Return only the non-null UnknownTypeObject objects
+        UnknownTypeObject[] trimmedArray = new UnknownTypeObject[unknownCount];
+        System.arraycopy(unknownTypeObjectArray, 0, trimmedArray, 0, unknownCount);
+        return trimmedArray;
+    }
+
+
+
     /**
      * Converts a string to an integer safely.
      * If conversion fails, returns 0.
@@ -227,5 +322,4 @@ public class RunSimulation {
 
         return false;
     }
-    
 }
