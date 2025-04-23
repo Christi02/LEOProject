@@ -71,7 +71,7 @@ public class Debris extends SpaceObject{
         return hasSisterDebris;
     }
 
-    public static void assessOrbitSystem(Debris[] debrisArray) {
+    public static void printDebrisData(Debris[] debrisArray) {
         for (Debris debris : debrisArray) {
             if (debris != null) {
                 System.out.println("Record ID: " + debris.getRecordId());
