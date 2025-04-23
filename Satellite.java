@@ -192,3 +192,4 @@ public class Satellite extends SpaceObject{
     public double getDeltaV90Day() {
         return deltaV90day;
     }
+}

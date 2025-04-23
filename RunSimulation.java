@@ -39,9 +39,9 @@ public class RunSimulation {
         Debris[] debrisArray = loadDebrisFromCSV("rso_metrics.csv");
 
         Scientist scientist = new Scientist("Scientist", debrisArray);
-        //SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
-        //Policymaker policymaker = new Policymaker("Policymaker");
-        //Administrator administrator = new Administrator("Administrator");
+        SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
+        Policymaker policymaker = new Policymaker("Policymaker");
+        Administrator administrator = new Administrator("Administrator");
 
         do{
             System.out.println("-------- Welcome -------");
@@ -59,13 +59,13 @@ public class RunSimulation {
                     scientist.userMenu();
                     break;
                 case "Space Agency Representative":
-                    //sap.userMenu();
+                    sap.userMenu();
                     break;
                 case "Policymaker":
-                    //policymaker.userMenu();
+                    policymaker.userMenu();
                     break;
                 case "Administrator":
-                    //administrator.userMenu();
+                    administrator.userMenu();
                     break;
                 case "EXIT":
                     System.exit(0); //no errors, program ends
@@ -227,4 +227,5 @@ public class RunSimulation {
 
         return false;
     }
+    
 }

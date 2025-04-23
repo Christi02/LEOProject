@@ -25,12 +25,10 @@ public abstract class AssessOrbitSystem {
                     break;
                 case 3:
                     break;
-                case 4:
-                    break;
                 default:
                     System.out.println("Invalid choice. Please try again. \n");
             } 
-        }while(choice != 4);
+        }while(choice != 3);
 
     }
 }

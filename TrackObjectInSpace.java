@@ -19,6 +19,7 @@ public abstract class TrackObjectInSpace {
             System.out.println("2. Debris ");
             System.out.println("3. Payload ");
             System.out.println("4. Unknown \n");
+            System.out.println("5. Back");
             System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
@@ -26,15 +27,19 @@ public abstract class TrackObjectInSpace {
                 case 1:
                     break;
                 case 2:
+                    //Debris.printDebrisData(debrisArray);
                     break;
                 case 3:
                     break;
                 case 4:
+                    //Unknown.printUnknownList(unknownArr);
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again. \n");
             } 
-        }while(choice != 4);
+        }while(choice != 5);
 
     }
 }

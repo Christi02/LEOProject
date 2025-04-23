@@ -2,7 +2,7 @@
  * This class is designed to model debris in space.
  *
  * @author Joseth Sanjay Valdez
- * @author Cristin Moreno
+ * @author Christin Moreno
  * @version 1.0
  */
 public class Debris extends SpaceObject{

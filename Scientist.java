@@ -33,10 +33,11 @@ public class Scientist extends User{
     public void subSwitchCases(int choice){
         switch(choice){
             case 1:
-                //TrackObjectInSpace.toisMenu();
+                TrackObjectInSpace.toisMenu();
                 break;
             case 2:
-                Debris.printDebrisData(debrisArray);
+                //Debris.printDebrisData(debrisArray);
+                AssessOrbitSystem.aosMenu();                
                 break;
             case 3:
                 System.out.println("Going back to the main menu. \n");
