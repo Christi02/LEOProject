@@ -2,12 +2,14 @@ public class Scientist extends User {
 
     private Debris[] debrisArray = new Debris[1000];
     private UnknownTypeObject[] unknownObjArray = new UnknownTypeObject[1000];
+    private TrackObjectsInLEO[] trackObjectsInLEOarray = new TrackObjectsInLEO[1000];
 
     /** Constructor explicitly invokes from User class */
-    public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray) {
+    public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray, TrackObjectsInLEO[] trackObjectsInLEOarray) {
         super(position);
         this.debrisArray = debrisArray;
         this.unknownObjArray = unknownObjArray;
+        this.trackObjectsInLEOarray = trackObjectsInLEOarray;
     }
 
     /**
@@ -33,10 +35,11 @@ public class Scientist extends User {
                 TrackObjectInSpace.toisMenu(debrisArray, unknownObjArray);
                 break;
             case 2:
-                System.out.println("Assessing Orbit System...");
+                AssessOrbitSystem.aosMenu(trackObjectsInLEOarray);
                 break;
             case 3:
                 System.out.println("Going back to the main menu. \n");
+                RunSimulation.mainMenu();
                 break;
             default:
                 System.out.println("Invalid choice. Please try again. \n");

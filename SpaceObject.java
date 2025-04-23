@@ -21,6 +21,8 @@ public abstract class SpaceObject {
     /** Country that launched or owns it. */
     protected  String country;
 
+    protected String approximateOrbitType;
+
     protected String orbitType;
 
     /** What kind of object it is. Like satellite or debris. */
@@ -93,6 +95,10 @@ public abstract class SpaceObject {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void setApproximateOrbitType(String approximateOrbitType) {
+        this.approximateOrbitType = approximateOrbitType;
     }
 
     public void setOrbitType(String orbitType) {
@@ -238,11 +244,19 @@ public abstract class SpaceObject {
     public String getCountry() {
         return country;
     }
-
     /**
      * Gets the approximate orbit type of the object.
      *
      * @return the approximate orbit type
+     */
+    public String getApproximateOrbitType() {
+        return approximateOrbitType;
+    }
+
+    /**
+     * Gets the orbit type of the object.
+     *
+     * @return the orbit type
      */
     public String getOrbitType() {
         return orbitType;

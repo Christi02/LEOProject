@@ -10,6 +10,8 @@ public class Debris extends SpaceObject{
     /** True if this debris has sister debris. */
     protected boolean hasSisterDebris;
 
+    String[] data;
+
 
     public Debris(
             int recordId,
@@ -51,6 +53,9 @@ public class Debris extends SpaceObject{
         this.isUnkObject = isUnkObject;
         this.hasSisterDebris = hasSisterDebris;
     }
+    public Debris(String[] parts){
+        this.data = parts;
+    }
 
 
     /**
@@ -88,16 +93,27 @@ public class Debris extends SpaceObject{
             }
         }
     }
-    /*public static boolean stillInOrbit(Debris[] debrisArray){
+    /**
+     * Checks if the debris is still in orbit or has exited returning a boolean
+     * 
+     * @author Christin Moreno
+     * @author Joseth Sanjay Valdez
+     * @param debrisArray
+     * @return if the debris is still in orbit or has exited 
+     */
+    public static boolean stillInOrbit(Debris[] debrisArray){
         boolean inOrbit =  true;
         for(Debris debris : debrisArray){
-            if(debris.approximateOrbitType.equalsIgnoreCase"Unknown Orbit Category" && debris.getLongitude() == 0 
-            && debris.getDaysOld() > 15000 && debris.getConjunctionCount() == 0){
+            if(debris == null){
+                continue;
+            }
+            if((debris.approximateOrbitType.equalsIgnoreCase("Unknown Orbit Category" ))  && (debris.getLongitude() == 0)
+            && (debris.getDaysOld() > 15000) && (debris.getConjunctionCount() == 0)){
                 inOrbit = false;
             }
         }
         return inOrbit;
-    }*/
+    }
 
     /**
      * Calculates the risk level of each debris for the updated CSV file.
@@ -111,6 +127,9 @@ public class Debris extends SpaceObject{
         double orbitalDrift = 0.0;
         String rLevel = "";
         for(Debris debris : debrisArray){
+            if(debris == null){
+                continue;
+            }
              orbitalDrift = Math.abs(debris.longitude - debris.avgLongitude);
              if(orbitalDrift > 50){
                 rLevel = "High Risk";

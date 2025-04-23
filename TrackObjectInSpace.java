@@ -10,7 +10,7 @@ public abstract class TrackObjectInSpace {
     /**
      * Menu
      */
-    public static void toisMenu(){
+    public static void toisMenu(Debris[] debrisArray, UnknownTypeObject[] objects){
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
@@ -18,8 +18,8 @@ public abstract class TrackObjectInSpace {
             System.out.println("1. Rocket Body ");
             System.out.println("2. Debris ");
             System.out.println("3. Payload ");
-            System.out.println("4. Unknown \n");
-            System.out.println("5. Back");
+            System.out.println("4. Unknown");
+            System.out.println("5. Back \n");
             System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
@@ -27,12 +27,12 @@ public abstract class TrackObjectInSpace {
                 case 1:
                     break;
                 case 2:
-                    //Debris.printDebrisData(debrisArray);
+                    Debris.printDebrisData(debrisArray);
                     break;
                 case 3:
                     break;
                 case 4:
-                    //Unknown.printUnknownList(unknownArr);
+                    UnknownTypeObject.printUnknownObjectsData(objects);
                     break;
                 case 5:
                     break;

@@ -1,4 +1,11 @@
 
+/**
+     * This class is designed to track objects in LEO.
+     *
+     * @author Christin Moreno
+     * @author Joseth Sanjay Valdez
+     * @version 1.0
+     */
 public class TrackObjectsInLEO extends SpaceObject{
 
     public TrackObjectsInLEO(
