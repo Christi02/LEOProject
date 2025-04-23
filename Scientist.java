@@ -1,50 +1,91 @@
 /**
- * Curated menu for only Scientists.
- * @author Christin Moreno
+ * This class is designed to model debris in space.
+ *
  * @author Joseth Sanjay Valdez
+ * @author Cristin Moreno
  * @version 1.0
  */
-public class Scientist extends User{
+public class Debris extends SpaceObject{
 
-    private Debris[] debrisArray;  // Array to hold debris objects
+    /** True if this debris has sister debris. */
+    protected boolean hasSisterDebris;
 
-    /** explicitly invokes from User class */
-    public Scientist(String position, Debris[] debrisArray){
-        super(position);
-        this.debrisArray = debrisArray;  // Pass the list of debris objects
+
+    public Debris(
+            int recordId,
+            int noradCatId,
+            String satelliteName,
+            String country,
+            String orbitType,
+            String objectType,
+            int launchYear,
+            String launchSite,
+            double longitude,
+            double avgLongitude,
+            double[] geohash,
+            boolean isNominated,
+            boolean hasDossier,
+            int daysOld,
+            int conjunctionCount,
+            boolean isUnkObject,
+            boolean hasSisterDebris
+    ) {
+        this.recordId = recordId;
+        this.noradCatId = noradCatId;
+        this.satelliteName = satelliteName;
+        this.country = country;
+        this.orbitType = orbitType;
+        this.objectType = objectType;
+        this.launchYear = launchYear;
+        this.launchSite = launchSite;
+        this.longitude = longitude;
+        this.avgLongitude = avgLongitude;
+        if (geohash != null && geohash.length == 2) {
+            this.geohash[0] = geohash[0];
+            this.geohash[1] = geohash[1];
+        }
+        this.isNominated = isNominated;
+        this.hasDossier = hasDossier;
+        this.daysOld = daysOld;
+        this.conjunctionCount = conjunctionCount;
+        this.isUnkObject = isUnkObject;
+        this.hasSisterDebris = hasSisterDebris;
+    }
+
+
+    /**
+     * Sets whether this debris has a sister debris.
+     *
+     * @param hasSister true if there’s a known related piece of debris
+     */
+    public void setHasSisterDebris(boolean hasSister) {
+        this.hasSisterDebris = hasSister;
     }
 
     /**
-     * Overrides subMenuChoice method from User class
-     *  Specified menu options for the user.
+     * Returns true if this debris has a related "sister" debris.
+     *
+     * @return true if sister debris exists
      */
-    @Override
-    public void subMenuChoice(){
-        System.out.println("1. Track Objects in Space");
-        System.out.println("2. Assess Orbit System");
+    public boolean hasSisterDebris() {
+        return hasSisterDebris;
     }
 
-    /**
-     *  Overrides subSwitchCases from User class.
-     *  These are the choice options for the specified menu.
-     * @param choice user input for menu option
-     */
-    @Override
-    public void subSwitchCases(int choice){
-        switch(choice){
-            case 1:
-                //TrackObjectInSpace.toisMenu();
-                break;
-            case 2:
-                Debris.assessOrbitSystem(debrisArray);
-                break;
-            case 3:
-                System.out.println("Going back to the main menu. \n");
-                //RunSimulation.mainMenu(); //sends back to main menu
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again. \n");
+    public static void printDebrisData(Debris[] debrisArray) {
+        for (Debris debris : debrisArray) {
+            if (debris != null) {
+                System.out.println("Record ID: " + debris.getRecordId());
+                System.out.println("Satellite Name: " + debris.getSatelliteName());
+                System.out.println("Country: " + debris.getCountry());
+                System.out.println("Orbit Type: " + debris.getOrbitType());
+                System.out.println("Launch Year: " + debris.getLaunchYear());
+                System.out.println("Launch Site: " + debris.getLaunchSite());
+                System.out.println("Longitude: " + debris.getLongitude());
+                System.out.println("Avg. Longitude: " + debris.getAvgLongitude());
+                System.out.println("Geohash: [" + debris.getGeohash()[0] + ", " + debris.getGeohash()[1] + "]");
+                System.out.println("Days Old: " + debris.getDaysOld());
+                System.out.println("----------------------------------------------------");
+            }
         }
     }
-
 }
