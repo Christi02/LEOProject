@@ -1,10 +1,22 @@
+/**
+ * Menu for Track Object in Space in Scientist menu
+ * @author Christin Moreno
+ * @author Joseth Sanjay Valdez
+ * @version 1.0
+ */
 public class Scientist extends User {
 
     private Debris[] debrisArray = new Debris[1000];
     private UnknownTypeObject[] unknownObjArray = new UnknownTypeObject[1000];
     private TrackObjectsInLEO[] trackObjectsInLEOarray = new TrackObjectsInLEO[1000];
 
-    /** Constructor explicitly invokes from User class */
+    /**
+     *  Constroctor 
+     * @param position for type of user
+     * @param debrisArray the Debris array
+     * @param unknownObjArray the unknown objects array
+     * @param trackObjectsInLEOarray the objects for the LEO list array
+     */
     public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray, TrackObjectsInLEO[] trackObjectsInLEOarray) {
         super(position);
         this.debrisArray = debrisArray;

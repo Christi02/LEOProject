@@ -1,6 +1,11 @@
 
 import java.io.*;
-
+/**
+ * Class to create the new updated CSV file 
+ * @author Christin Moreno
+ * @author Joseth Sanjay Valdez
+ * @version 1.0
+ */
 public class NewCSV {
     public static void main(String[] args) {
         
@@ -11,6 +16,11 @@ public class NewCSV {
         newCSV(oldRSOFile, newRSOFile);
 
     }
+    /**
+     *  Creates the new csv file with new columns, still in orbit and risk level
+     * @param oldRSOFile the old csv file
+     * @param newRSOFile the new csv file 
+     */
     public static void newCSV(String oldRSOFile, String newRSOFile) {
         Debris[] debrisArray = new Debris[1000];
 

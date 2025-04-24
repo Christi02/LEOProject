@@ -2,6 +2,7 @@ import java.util.Scanner;
 /**
  * Menu for Assess ORbit System in Scientist menu
  * @author Christin Moreno
+ * @author Joseth Sanjay Valdez
  * @version 1.0
  */
 public abstract class AssessOrbitSystem {
@@ -9,7 +10,8 @@ public abstract class AssessOrbitSystem {
     static String newRSOFile = "new_rso_metrics.csv";
 
     /**
-     * Menu 
+     * Menu for assess orbit system
+     * @param trackObjectsInLEOarray
      */
     public static void aosMenu(TrackObjectsInLEO[] trackObjectsInLEOarray){
         Scanner scanner = new Scanner(System.in);

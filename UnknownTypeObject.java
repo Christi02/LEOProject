@@ -45,7 +45,10 @@ public class UnknownTypeObject extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
         this.isUnkObject = isUnkObject;
     }
-
+    /**
+     * 
+     * @param objects the array for unknown objects list
+     */
     public static void printUnknownObjectsData(UnknownTypeObject[] objects) {
         for (UnknownTypeObject obj : objects) {
             if (obj != null) {

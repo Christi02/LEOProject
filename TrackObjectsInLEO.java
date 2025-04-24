@@ -47,6 +47,10 @@ public class TrackObjectsInLEO extends SpaceObject{
         this.conjunctionCount = conjunctionCount;
         this.isUnkObject = isUnkObject;
     }
+    /**
+     * Prints the LEO List
+     * @param leoArr the array for the LEO List
+     */
     public static void printLEOList(TrackObjectsInLEO[] leoArr){
         for(TrackObjectsInLEO leoList : leoArr){
             if(leoList != null){

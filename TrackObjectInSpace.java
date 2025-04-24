@@ -3,6 +3,7 @@ import java.util.Scanner;
 /**
  * Menu for Track Object in Space in Scientist menu
  * @author Christin Moreno
+ * @author Joseth Sanjay Valdez
  * @version 1.0
  */
 public abstract class TrackObjectInSpace {

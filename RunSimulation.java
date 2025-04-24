@@ -76,7 +76,11 @@ public class RunSimulation {
             }
         } while(!choice.equals("EXIT"));
     }
-
+    /**
+     * 
+     * @param filePath the csv file
+     * @return Debris array
+     **/
     public static Debris[] loadDebrisFromCSV(String filePath) {
         Debris[] debrisArray = new Debris[1000]; // Create a fixed-size array to store debris
         int debrisCount = 0;
@@ -167,9 +171,6 @@ public class RunSimulation {
         System.arraycopy(debrisArray, 0, trimmedArray, 0, debrisCount);
         return trimmedArray;
     }
-
-
-
     public static UnknownTypeObject[] loadUnknownTypeObjectsFromCSV(String filePath) {
         UnknownTypeObject[] unknownTypeObjectArray = new UnknownTypeObject[1000]; // Create a fixed-size array to store unknown type objects
         int unknownCount = 0;
@@ -260,7 +261,7 @@ public class RunSimulation {
         System.arraycopy(unknownTypeObjectArray, 0, trimmedArray, 0, unknownCount);
         return trimmedArray;
     }
-
+    
     public static TrackObjectsInLEO[] loadTOLFromCSV(String filePath) {
         TrackObjectsInLEO[] trackObjectsLEOArray = new TrackObjectsInLEO[1000]; // Create a fixed-size array to store objects
         int trackObjectLEOCount = 0;
