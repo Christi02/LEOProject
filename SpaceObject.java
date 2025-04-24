@@ -361,4 +361,32 @@ public abstract class SpaceObject {
     public boolean isUnkObject() {
         return isUnkObject;
     }
+    /**
+     * Calculation of the risk level of the orbital drifts
+     * @return String of the risk level of each object
+     */
+    public String risk_level(){
+        double orbitalDrift = Math.abs(getLongitude() - getAvgLongitude());
+        if(orbitalDrift > 50){
+            return "High Risk";
+        }
+        else if(orbitalDrift > 10){
+            return "Moderate Risk";
+        }
+        else{
+            return "Low Risk";
+        }
+    }
+    /**
+     * Will look into all of the objects and make sure they're in orbit or not
+     * @return if in orbit or deorbited (true or false)
+     */
+    public boolean still_in_orbit(){
+        if(getApproximateOrbitType() != null){
+            return true; 
+        }
+        return false;
+    }
+
 }
+
