@@ -22,7 +22,8 @@ public class NewCSV {
      * @param newRSOFile the new csv file 
      */
     public static void newCSV(String oldRSOFile, String newRSOFile) {
-        Debris[] debrisArray = new Debris[1000];
+        //Debris[] debrisArray = new Debris[1000];
+         
 
         try(
             BufferedReader br = new BufferedReader(new FileReader(oldRSOFile));
@@ -41,7 +42,7 @@ public class NewCSV {
                 }else{
                     Debris debris = new Debris(parts);
 
-                    bw.write(line + "," + debris.stillInOrbit(debrisArray) + "," + debris.riskLevel(debrisArray) + "\n");
+                    bw.write(line + "," + debris.still_in_orbit() + "," + debris.risk_level() + "\n");
                 }
             }
             System.out.println(newRSOFile);

@@ -74,6 +74,8 @@ public class Debris extends SpaceObject{
      */
     public boolean hasSisterDebris() {
         return hasSisterDebris;
+        
+    
     }
 
     public static void printDebrisData(Debris[] debrisArray) {
@@ -92,56 +94,6 @@ public class Debris extends SpaceObject{
                 System.out.println("----------------------------------------------------");
             }
         }
-    }
-    /**
-     * Checks if the debris is still in orbit or has exited returning a boolean
-     * 
-     * @author Christin Moreno
-     * @author Joseth Sanjay Valdez
-     * @param debrisArray
-     * @return if the debris is still in orbit or has exited 
-     */
-    public static boolean stillInOrbit(Debris[] debrisArray){
-        boolean inOrbit =  true;
-        for(Debris debris : debrisArray){
-            if(debris == null){
-                continue;
-            }
-            if((debris.approximateOrbitType.equalsIgnoreCase("Unknown Orbit Category" ))  && (debris.getLongitude() == 0)
-            && (debris.getDaysOld() > 15000) && (debris.getConjunctionCount() == 0)){
-                inOrbit = false;
-            }
-        }
-        return inOrbit;
-    }
-
-    /**
-     * Calculates the risk level of each debris for the updated CSV file.
-     * 
-     * @author Christin Moreno
-     * @author Joseth Sanjay Valdez
-     * @param debrisArray
-     * @return The risk level of the debris 
-     */
-    public static String riskLevel(Debris[] debrisArray){
-        double orbitalDrift = 0.0;
-        String rLevel = "";
-        for(Debris debris : debrisArray){
-            if(debris == null){
-                continue;
-            }
-             orbitalDrift = Math.abs(debris.longitude - debris.avgLongitude);
-             if(orbitalDrift > 50){
-                rLevel = "High Risk";
-             }
-             else if(orbitalDrift > 10){
-                rLevel = "Moderate Risk";
-             }
-             else{
-                rLevel = "Low Risk";
-             }
-        }
-        return rLevel;
     }
 
 }

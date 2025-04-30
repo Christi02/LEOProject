@@ -11,7 +11,7 @@ public abstract class TrackObjectInSpace {
     /**
      * Menu
      */
-    public static void toisMenu(Debris[] debrisArray, UnknownTypeObject[] objects){
+    public static void toisMenu(Debris[] debrisArray, UnknownTypeObject[] objects, RocketBody[] rocketBodyArray, Payload[] payloadArray){
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
@@ -26,11 +26,13 @@ public abstract class TrackObjectInSpace {
 
             switch(choice){
                 case 1:
+                    RocketBody.printRocketBodyData(rocketBodyArray);
                     break;
                 case 2:
                     Debris.printDebrisData(debrisArray);
                     break;
                 case 3:
+                    Payload.printPayloadData(payloadArray);
                     break;
                 case 4:
                     UnknownTypeObject.printUnknownObjectsData(objects);

@@ -9,6 +9,8 @@ public class Scientist extends User {
     private Debris[] debrisArray = new Debris[1000];
     private UnknownTypeObject[] unknownObjArray = new UnknownTypeObject[1000];
     private TrackObjectsInLEO[] trackObjectsInLEOarray = new TrackObjectsInLEO[1000];
+    private RocketBody[] rocketBodyArray = new RocketBody[1000];
+    private Payload[] payloadArray = new Payload[1000];
 
     /**
      *  Constroctor 
@@ -17,11 +19,14 @@ public class Scientist extends User {
      * @param unknownObjArray the unknown objects array
      * @param trackObjectsInLEOarray the objects for the LEO list array
      */
-    public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray, TrackObjectsInLEO[] trackObjectsInLEOarray) {
+    public Scientist(String position, Debris[] debrisArray, UnknownTypeObject[] unknownObjArray, TrackObjectsInLEO[] trackObjectsInLEOarray
+    , RocketBody[] rocketBodyArray, Payload[] payloadArray) {
         super(position);
         this.debrisArray = debrisArray;
         this.unknownObjArray = unknownObjArray;
         this.trackObjectsInLEOarray = trackObjectsInLEOarray;
+        this.rocketBodyArray = rocketBodyArray;
+        this.payloadArray = payloadArray;
     }
 
     /**
@@ -32,7 +37,6 @@ public class Scientist extends User {
     public void subMenuChoice() {
         System.out.println("1. Track Objects in Space");
         System.out.println("2. Assess Orbit System");
-        System.out.println("3. Return to Main Menu");
     }
 
     /**
@@ -44,7 +48,7 @@ public class Scientist extends User {
     public void subSwitchCases(int choice) {
         switch (choice) {
             case 1:
-                TrackObjectInSpace.toisMenu(debrisArray, unknownObjArray);
+                TrackObjectInSpace.toisMenu(debrisArray, unknownObjArray, rocketBodyArray, payloadArray);
                 break;
             case 2:
                 AssessOrbitSystem.aosMenu(trackObjectsInLEOarray);

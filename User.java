@@ -25,6 +25,8 @@ abstract class User extends SpaceObject{
             System.out.println("Please pick a number option.");
             choice = scanner.nextInt();
 
+            
+
             subSwitchCases(choice);
 
         } while(choice != 3);

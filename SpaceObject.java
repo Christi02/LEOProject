@@ -382,7 +382,9 @@ public abstract class SpaceObject {
      * @return if in orbit or deorbited (true or false)
      */
     public boolean still_in_orbit(){
-        if(getApproximateOrbitType() != null){
+        if(getApproximateOrbitType() != null && !(getApproximateOrbitType().equalsIgnoreCase("Unknown Orbit Category")
+        && getLongitude() != 0 && getDaysOld() < 1500 && getConjunctionCount() == 0)
+        ){
             return true; 
         }
         return false;
