@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  * Abstract User class that holds the User Menu.
@@ -17,17 +18,25 @@ abstract class User extends SpaceObject{
      * Skeleton menu for subclasses.
      */
     public void userMenu(){
-        int choice;
+        int choice = 0;
         do {
             System.out.println("-------- "+ position+"'s " +  "Menu -------");
             subMenuChoice();
             System.out.println("3. Back to main menu \n");
             System.out.println("Please pick a number option.");
-            choice = scanner.nextInt();
-
-            
-
-            subSwitchCases(choice);
+            //choice = scanner.nextInt();
+            try {
+                choice = scanner.nextInt();
+                if(choice < 1 || choice > 3){
+                    System.out.println("Invalid choice. Please choose 1 - 3. \n");
+                }else{
+                    subSwitchCases(choice);
+                }
+                
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid choice. Please try again. \n");
+                scanner.nextLine();
+            }
 
         } while(choice != 3);
 

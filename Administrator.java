@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Curated menu for only Administrator.
@@ -18,6 +18,8 @@ public class Administrator extends User{
      * */
     @Override
     public void userMenu(){
+        Scanner scanner = new Scanner(System.in);
+        UserType newUser = new CreateUser();
         int choice;
         do {
             System.out.println("-------- "+ position+"'s " +  "Menu -------");
@@ -30,10 +32,14 @@ public class Administrator extends User{
 
             switch(choice){
                 case 1:
+                    UserCSV.infoSaved(CreateUser.userName(), CreateUser.password(), newUser.userType()); //makes the new user
+                    System.out.println("User created successfully!");
                     break;
                 case 2:
+                    ManageUser.manage(); //goes into changing usernames and passwords
                     break;
                 case 3:
+                    DeleteUser.deleteUserOption(); // deletes the users
                     break;
                 case 4:
                     System.out.println("Going back to the main menu. \n");
@@ -42,7 +48,6 @@ public class Administrator extends User{
                 default:
                     System.out.println("Invalid choice. Please try again. \n");
             }
-
-        } while(choice != 4);
+        }while(choice != 4);
     }
 }

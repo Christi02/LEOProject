@@ -3,10 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Date: April 2025
+ * Date: May 2025
  * Course: CS 3331 CRN 21024
  * Instructor: Dr. Bhanukiran Gurijala
- * Project Part 1
+ * Project Part 2
  * Description:
  *
  * Honesty Statement: Both Joseth and Christin have worked on this project
@@ -35,6 +35,7 @@ public class RunSimulation {
      */
     public static void mainMenu(){
         String choice;
+
         Debris[] debrisArray = loadDebrisFromCSV("rso_metrics.csv");
         UnknownTypeObject[] unknownObjArray = loadUnknownTypeObjectsFromCSV("rso_metrics.csv");
         Payload[] payloadArray = loadPayloadFromCSV("rso_metrics.csv");
@@ -59,16 +60,27 @@ public class RunSimulation {
 
             switch(choice){
                 case "Scientist":
-                    scientist.userMenu();
+                    if(loggin("Scientist")){
+                        scientist.userMenu();
+                    }
+                    System.out.println("Incorrect username and/or password");
                     break;
                 case "Space Agency Representative":
-                    sap.userMenu();
+                    if(loggin("Space Agency Representative")){
+                        sap.userMenu();
+                    }
                     break;
                 case "Policymaker":
-                    policymaker.userMenu();
+                    if(loggin("Policymaker")){
+                        policymaker.userMenu();
+                    }
+                    System.out.println("Incorrect username and/or password");
                     break;
                 case "Administrator":
-                    administrator.userMenu();
+                    if(loggin("Administrator")){
+                        administrator.userMenu();
+                    }
+                    System.out.println("Incorrect username and/or password");
                     break;
                 case "EXIT":
                     System.exit(0); //no errors, program ends
@@ -77,6 +89,23 @@ public class RunSimulation {
                     System.out.println("Invalid choice. Please try again. \n");
             }
         } while(!choice.equals("EXIT"));
+    }
+    public static boolean loggin(String position){
+        String username;
+        String password; 
+
+        System.out.println("Please enter your username:");
+        username = scanner.nextLine();
+        System.out.println("Please enter your password:");
+        password = scanner.nextLine();
+        if(ManageUser.userExists(username, position)){
+            if(ManageUser.userExistsPassword(username, password)){
+                System.out.println("Login successfull");
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
     /**
      * 
