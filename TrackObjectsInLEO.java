@@ -68,4 +68,18 @@ public class TrackObjectsInLEO extends SpaceObject{
             }
         }
     }
+    public void printInfo() {
+        System.out.println("Record ID: " + getRecordId());
+        System.out.println("Satellite Name: " + getSatelliteName());
+        System.out.println("Country: " + getCountry());
+        System.out.println("Orbit Type: " + getOrbitType());
+        System.out.println("Launch Year: " + getLaunchYear());
+        System.out.println("Launch Site: " + getLaunchSite());
+        System.out.println("Longitude: " + getLongitude());
+        System.out.println("Avg. Longitude: " + getAvgLongitude());
+        System.out.println("Geohash: [" + getGeohash()[0] + ", " + getGeohash()[1] + "]");
+        System.out.println("Days Old: " + getDaysOld());
+        System.out.println("Conjunction Count: " + getConjunctionCount());
+        System.out.println("----------------------------------------------------");
+    }
 }

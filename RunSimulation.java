@@ -36,14 +36,14 @@ public class RunSimulation {
     public static void mainMenu(){
         String choice;
 
+        RocketBody[] rocketbodyArray = loadRocketbodyFromCSV("rso_metrics.csv");
         Debris[] debrisArray = loadDebrisFromCSV("rso_metrics.csv");
         UnknownTypeObject[] unknownObjArray = loadUnknownTypeObjectsFromCSV("rso_metrics.csv");
         Payload[] payloadArray = loadPayloadFromCSV("rso_metrics.csv");
-        RocketBody[] rocketbodyArray = loadRocketbodyFromCSV("rso_metrics.csv");
         TrackObjectsInLEO[] trackObjectsInLEO = loadTOLFromCSV("rso_metrics.csv");
 
         Scientist scientist = new Scientist("Scientist", debrisArray, unknownObjArray, trackObjectsInLEO, rocketbodyArray, payloadArray);
-        SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative");
+        SpaceAgencyRepresentative sap = new SpaceAgencyRepresentative("Space Agency Representative", trackObjectsInLEO);
         Policymaker policymaker = new Policymaker("Policymaker");
         Administrator administrator = new Administrator("Administrator");
 
@@ -108,7 +108,7 @@ public class RunSimulation {
         return false;
     }
     /**
-     * 
+     *
      * @param filePath the csv file
      * @return Debris array
      **/
@@ -447,7 +447,7 @@ public class RunSimulation {
                 boolean isUnkObject = parseBoolean(allFields[i++]);
 
                 // Create UnknownTypeObject if objectType is "UNKNOWN"
-                if ("ROCKETBODY".equalsIgnoreCase(objectType)) {
+                if ("ROCKET BODY".equalsIgnoreCase(objectType)) {
                     RocketBody rocketBody = new RocketBody(
                             recordId, noradCatId, satelliteName, country, approximateOrbitType,
                             objectType, launchYear, launchSite, longitude, avgLongitude, geoHash,
@@ -472,7 +472,7 @@ public class RunSimulation {
         System.arraycopy(rocketBodyArray, 0, trimmedArray, 0, rocketBodyCount);
         return trimmedArray;
     }
-    
+
     public static TrackObjectsInLEO[] loadTOLFromCSV(String filePath) {
         TrackObjectsInLEO[] trackObjectsLEOArray = new TrackObjectsInLEO[1000]; // Create a fixed-size array to store objects
         int trackObjectLEOCount = 0;
